@@ -1,3 +1,3 @@
-## [0.0.1] - TODO: Add release date.
+## [0.1.0] - 2021-04-02
 
-* TODO: Describe initial release.
+The initial release allows flutter test to use a Japanese font (https://fonts.google.com/specimen/Noto+Sans+JP).
