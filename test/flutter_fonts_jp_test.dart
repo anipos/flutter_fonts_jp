@@ -1,12 +1,30 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_fonts_jp/flutter_fonts_jp.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:flutter_fonts_jp/flutter_fonts_jp.dart';
-
 void main() {
-  test('adds one to input values', () {
-    final calculator = Calculator();
-    expect(calculator.addOne(2), 3);
-    expect(calculator.addOne(-7), -6);
-    expect(calculator.addOne(0), 1);
+  testWidgets('golden test', (WidgetTester tester) async {
+    await loadJapaneseFont();
+    await tester.pumpWidget(App());
+    await expectLater(find.byType(App), matchesGoldenFile('app.png'));
   });
+}
+
+class App extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              Text('日本語'),
+              Text('English'),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 }

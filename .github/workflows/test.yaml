@@ -7,9 +7,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     strategy:
+      fail-fast: false
       matrix:
+        # Golden files can be inconsistent between different flutter versions.
+        # Only support the latest one when diverge.
         flutter-version:
-          - 1.22.6
           - 2.0.3
     steps:
       - uses: actions/checkout@v2
@@ -20,3 +22,8 @@ jobs:
       - run: dart format --set-exit-if-changed .
       - run: flutter analyze
       - run: flutter test
+      - uses: actions/upload-artifact@v2
+        with:
+          name: failures-${{ matrix.flutter-version }}
+          path: test/failures
+        if: ${{ failure() }}
