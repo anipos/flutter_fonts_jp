@@ -1,8 +1,7 @@
 name: flutter_fonts_jp
-description: A new Flutter package project.
-version: 0.0.1
-author:
-homepage:
+description: Japanese fonts for flutter apps.
+version: 0.1.0
+homepage: https://github.com/anipos/flutter_fonts_jp
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
